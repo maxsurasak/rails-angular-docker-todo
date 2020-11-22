@@ -1,0 +1,44 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="cards">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="90%" fxFlex.md="66.6667%" fxFlex.gt-md="50%">
+
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2>Add To Do</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <app-todo-form (toDoChange)="onAddToDoChange($event)"></app-todo-form> -->
+          <mat-form-field fxFlex>
+            <input matInput [formControl]="todo">
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button color="primary" (click)="addToDo()">Add To Do</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2>To Do List</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ng-container>
+            <ng-container *ngIf="toDos.length > 0">
+              <mat-list role="list">
+                <mat-list-item *ngFor="let toDo of toDos">
+                  <mat-checkbox [checked]="toDo.done" (change)="updateTodo(toDo.id,$event.checked)">
+                    {{ toDo?.title }}
+                  </mat-checkbox>
+                </mat-list-item>
+              </mat-list>
+            </ng-container>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
