@@ -10,13 +10,13 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   getList(): Observable<any> {
-    return this.http.get(environment.API_URL + '/todos');
+    return this.http.get(environment.apiUrl + '/todos');
   }
 
   create(data): Observable<any> {
-    return this.http.post(environment.API_URL + '/todos', { todo: data });
+    return this.http.post(environment.apiUrl + '/todos', { todo: data });
   }
   update(id, data): Observable<any> {
-    return this.http.put(environment.API_URL + '/todos/' + id, { todo: data });
+    return this.http.put(environment.apiUrl + '/todos/' + id, { todo: data });
   }
 }
