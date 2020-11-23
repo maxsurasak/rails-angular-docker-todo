@@ -10,7 +10,11 @@ ENV BUNDLER_VERSION 2.1
 RUN bundle install
 COPY . /todo
 
+
 EXPOSE ${PORT}
 
+# Setting env up
+ENV RAILS_ENV=$RAILS_ENV
+ENV RACK_ENV=$RAILS_ENV
 # Start the main process.
-CMD [RAILS_ENV=${RAILS_ENV},"rails", "server", "-b", "0.0.0.0"]
+CMD [ "bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
